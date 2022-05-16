@@ -17,6 +17,17 @@ import typing
 
 from pydantic import BaseModel
 
+
+class FileConfig(BaseModel):
+    email_addr: typing.Text
+    email_pass: typing.Text
+    allowed_hosts: typing.List[typing.Text]
+    
+conf: FileConfig
+
+with open('config.json', "r") as f:
+    conf=FileConfig(**json.loads(f.read()))
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,7 +41,7 @@ SECRET_KEY = 'django-insecure-sz+_%73c#j@mjk#d^^%284=e!zng!asj683f+6qpwm(9#4i7^g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = conf.allowed_hosts
 
 
 # Application definition
@@ -123,6 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -135,16 +147,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-
-
-class FileConfig(BaseModel):
-    email_addr: typing.Text
-    email_pass: typing.Text
-    
-conf: FileConfig
-
-with open('config.json', "r") as f:
-    conf=FileConfig(**json.loads(f.read()))
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

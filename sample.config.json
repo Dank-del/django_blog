@@ -1,4 +1,5 @@
 {
   "email_addr": "dankguy6146@gmail.com",
-  "email_pass": "ok"   
+  "email_pass": "ok",
+  "allowed_hosts": ["localhost", "sayan.org.in"]
 }

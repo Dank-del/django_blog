@@ -161,3 +161,5 @@ cython_debug/
 *.jpg
 *.jpeg
 *.png
+posts.json
+config.json

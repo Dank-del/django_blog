@@ -1,5 +1,7 @@
 {
   "email_addr": "dankguy6146@gmail.com",
   "email_pass": "ok",
-  "allowed_hosts": ["localhost", "sayan.org.in"]
+  "allowed_hosts": ["localhost", "sayan.org.in"],
+  "debug": true,
+  "csrf_trusted_origins": ["http://127.0.0.1", "https://sayan.org.in"]
 }

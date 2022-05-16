@@ -22,6 +22,8 @@ class FileConfig(BaseModel):
     email_addr: typing.Text
     email_pass: typing.Text
     allowed_hosts: typing.List[typing.Text]
+    csrf_trusted_origins: typing.List[typing.Text]
+    debug: bool
     
 conf: FileConfig
 
@@ -39,10 +41,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sz+_%73c#j@mjk#d^^%284=e!zng!asj683f+6qpwm(9#4i7^g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = conf.debug
 
 ALLOWED_HOSTS = conf.allowed_hosts
-
+CSRF_TRUSTED_ORIGINS = conf.csrf_trusted_origins
 
 # Application definition
 

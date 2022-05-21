@@ -19,8 +19,8 @@
     <p class="article-content">{{ post.content }}</p>
   </div>
 </article>-->
-        <div class="card-columns">
-            <div class="card" style="width: 45rem;">
+        <div class="card-deck">
+            <div class="card">
                 {% if post.image %}
                     <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
                 {% else %}
